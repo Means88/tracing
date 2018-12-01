@@ -1,0 +1,37 @@
+.trace-header-selection {
+  position: relative;
+
+  .trace-header-mask {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    width: ~"calc(100% - 30px)";
+    height: 100%;
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      left: -15px;
+      width: 15px;
+      height: 100%;
+      background-color: fade(white, 25);
+    }
+
+    &::after {
+      content: ' ';
+      position: absolute;
+      right: -15px;
+      width: 15px;
+      height: 100%;
+      background-color: fade(white, 25);
+    }
+
+    .split-start, .split-end {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background-color: black;
+    }
+  }
+}
