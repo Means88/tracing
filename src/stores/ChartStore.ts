@@ -5,7 +5,7 @@ class ChartStore {
   @observable public maxValue: number = 0;
 
   @action public setMinValue(x: number) {
-    this.minValue = x;
+    this.minValue = Math.max(x, 0);
   }
 
   @action public setMaxValue(x: number) {

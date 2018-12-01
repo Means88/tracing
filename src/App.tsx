@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './App.css';
+import LineGraph from "./components/line-graph";
 import Monaco from "./components/monaco";
 import TraceBody from "./components/trace-body";
 import TraceHeaderSelection from "./components/trace-header-selection";
@@ -14,6 +14,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Monaco />
+        <LineGraph />
         <TraceHeaderSelection />
         <TraceBody />
       </div>

@@ -76,78 +76,81 @@ class TraceHeaderSelection extends React.Component<IProps, IState> {
       `${MASK_COLOR} ${endPercent || 100}%`}, ${
       `${MASK_COLOR} 100%`})`;
     return (
-      <div className="trace-header-selection">
-        <HorizontalBar
-          height={10}
-          // tslint:disable
-          datasetKeyProvider={(e: any) => e.key}
-          data={{
-            labels: this.spanList.map(() => ''),
-            datasets: this.datesets,
-          } as any}
-          options={{
-            legend: {
-              display: false,
-            },
-            tooltips: {
-              enabled: false,
-            },
-            scales: {
-              scaleLabel: {
+      <>
+        <header className="trace-header">Traces</header>
+        <div className="trace-header-selection">
+          <HorizontalBar
+            height={10}
+            // tslint:disable
+            datasetKeyProvider={(e: any) => e.key}
+            data={{
+              labels: this.spanList.map(() => ''),
+              datasets: this.datesets,
+            }}
+            options={{
+              legend: {
                 display: false,
               },
-              yAxes: [{
-                barPercentage: 1,
-                categoryPercentage: 1,
-                stacked: true,
-                gridLines: {
+              tooltips: {
+                enabled: false,
+              },
+              scales: {
+                scaleLabel: {
                   display: false,
                 },
-              }],
-              xAxes: [{
-                stacked: true,
-                position: 'top',
-                gridLines: {
-                  color: '#777777',
-                },
-                ticks: {
-                  callback(value: number) {
-                    return `${value}ms`;
+                yAxes: [{
+                  barPercentage: 1,
+                  categoryPercentage: 1,
+                  stacked: true,
+                  gridLines: {
+                    display: false,
                   },
-                  min: this.minValue,
-                  max: this.maxValue,
-                },
-              }],
-            },
-            plugins: {
-              datalabels: {
-                display: false,
+                }],
+                xAxes: [{
+                  stacked: true,
+                  position: 'top',
+                  gridLines: {
+                    color: '#777777',
+                  },
+                  ticks: {
+                    callback(value: number) {
+                      return `${value}ms`;
+                    },
+                    min: this.minValue,
+                    max: this.maxValue,
+                  },
+                }],
               },
-            },
-          } as any}
-        />
-        <div
-          className="trace-header-mask"
-          style={{
-            backgroundImage: progress,
-          }}
-          // tslint:disable
-          onMouseDown={this.startSelectRange}
-          onMouseMove={this.moveSelectRange}
-          onMouseUp={this.endSelectRange}
-        >
-          <div
-            className="split-start"
-            style={{ transform: `translateX(${startX - 3}px)` }}
-            {...ignoreMouseEvent}
+              plugins: {
+                datalabels: {
+                  display: false,
+                },
+              },
+            } as any}
           />
           <div
-            className="split-end"
-            style={{ transform: `translateX(${endX - 3}px)` }}
-            {...ignoreMouseEvent}
-          />
+            className="trace-header-mask"
+            style={{
+              backgroundImage: progress,
+            }}
+            // tslint:disable
+            onMouseDown={this.startSelectRange}
+            onMouseMove={this.moveSelectRange}
+            onMouseUp={this.endSelectRange}
+          >
+            <div
+              className="split-start"
+              style={{ transform: `translateX(${startX - 3}px)` }}
+              {...ignoreMouseEvent}
+            />
+            <div
+              className="split-end"
+              style={{ transform: `translateX(${endX - 3}px)` }}
+              {...ignoreMouseEvent}
+            />
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 

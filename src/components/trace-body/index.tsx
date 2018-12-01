@@ -14,7 +14,6 @@ class TraceBody extends React.Component {
   public render() {
     return (
       <div className="trace-body">
-        <header className="trace-body-header">Traces</header>
         <div className="trace-body-content">
           <div className="trace-body-side">
             <header className="trace-body-side-header" />
@@ -33,7 +32,7 @@ class TraceBody extends React.Component {
               data={{
                 labels: this.spanList.map(span => span.operationName),
                 datasets: createDataSets(this.spanList),
-              } as any}
+              }}
               options={{
                 legend: {
                   display: false,

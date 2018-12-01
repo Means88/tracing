@@ -11,4 +11,5 @@ declare module "*.json" {
 }
 
 declare module 'chartjs-plugin-datalabels';
+declare module 'chartjs-plugin-streaming';
 
